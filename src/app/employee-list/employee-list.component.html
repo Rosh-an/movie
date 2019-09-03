@@ -1,0 +1,78 @@
+
+<header>
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-Light bg-dark">
+  
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <a class="navbar-brand" style="color:white" href="#"><b>Xplorer</b></a>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbutt">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" [routerLink]="['/playlist']">Playlist</a>
+      </li>
+    </ul>
+    <!-- <form > -->
+      <input class="mr-sm-2"  type="search" placeholder="Search" aria-label="Search" #myId placeholder="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" (click)="fireEvent(myId.value)" type="submit" style="color:white;">Search</button>
+    <!-- </form> -->
+  </div>
+</nav>
+
+</header>
+
+
+<body>
+
+<hr>
+
+<h3 *ngIf="trending"><b>trending</b></h3>
+<h3 *ngIf="searching"><b>search results for {{myId.value}}</b></h3>
+
+<hr>
+
+            
+              
+             
+            
+
+   <!-- <p>{{list.items[2].snippet.title}}</p> -->
+ 
+  <div class="container">
+   <div class="row">
+      <div class="card mt-2" style="width:285px" *ngFor="let lis of list.items">
+        <p *ngIf="trending"><iframe width="100%" height="200" [src]="url2+lis.id | safe"></iframe></p>
+        <p *ngIf="searching"><iframe width="100%" height="200" [src]="url2+lis.id.videoId | safe"></iframe></p>
+        <!--<a href="#"><img src={{lis.snippet.thumbnails.default.url}}></a>-->
+        <!--<img class="card-img-top" src="..." alt="Card image cap">-->
+        <div class="card-body">
+          <h5 *ngIf="searching"  class="card-title"><a [routerLink]="[ '/details',lis.id.videoId]">{{lis.snippet.title}}</a></h5>
+          <h5 *ngIf="trending"  class="card-title"><a [routerLink]="[ '/details',lis.id]">{{lis.snippet.title}}</a></h5>
+        </div>
+        <div class="card-footer">
+          <div *ngIf="trending">
+          <small class="text-muted ch" *ngIf="trending">{{lis.snippet.channelTitle}}</small>
+          <small class="text-muted view" *ngIf="trending">{{lis.statistics.viewCount}} views</small><br>
+          <hr>
+        </div>
+        <div class="add">
+          <button *ngIf="trending" class="btn btn-outline-success my-2 my-sm-0 add1" (click)="playlist(lis.id,lis.snippet.title)"  type="submit" style="color:black;">Add</button>
+          <button *ngIf="searching" class="btn btn-outline-success my-2 my-sm-0 add1" (click)="playlist(lis.id.videoId,lis.snippet.title)"  type="submit" style="color:black;">Add</button><br>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <br>
+
+    <!--<button class="btn btn-outline-success my-2 my-sm-0" [routerLink]="['/playlist']" type="submit" style="color:black;">Show playlist</button>-->
+
+  </body>

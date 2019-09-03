@@ -1,0 +1,50 @@
+<header>
+
+    <nav class="navbar fixed-top navbar-expand-lg navbar-Light bg-dark">
+      
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <a class="navbar-brand" style="color:white" href="#"><b>Xplorer</b></a>
+    
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbutt">
+          <li class="nav-item active">
+            <a class="nav-link disabled" href="#">Home<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" [routerLink]="['/playlist']">Playlist<span class="sr-only">(current)</span></a>
+          </li>
+  
+        </ul>
+        <!-- <form > -->
+         
+        <!-- </form> -->
+      </div>
+    </nav>
+    </header>
+
+<div class="container">
+    <h1 id="topp" style="padding-top: 100px;">My playlist</h1>
+    <p><iframe width="100%" height="400" [src]="url+temp | safe"></iframe></p>
+    <div class="card-column">
+    <div class="card" style="width:120px height:400px" *ngFor="let o of obj" class="playlist">
+      <div class="card-body" style="padding:0px;">
+        <!--<p><iframe width="100%" height="200" [src]="url+o.vidId | safe"></iframe></p><br>-->
+        <div class="card-title">
+        <p><a style="color: black"  [routerLink]="[ '/details',o.vidId]"><b>{{o.title}}</b></a></p>
+        <p><b>Comment : </b>{{o.comment}}</p>
+        <button class="btn btn-outline-success my-2 my-sm-0" (click)="editcom(o.vidId,o.title,o.id)" type="submit" style="color:#53035E;">Edit comment</button>
+        </div>
+        <div class="card-footer" style="padding:0px;">
+        <a href="javascript:;" onclick="document.documentElement.scrollTop = 0;" ><button class="btn btn-outline-success my-2 my-sm-0" (click)="init(o.vidId)" type="submit" style="color:rgb(6, 58, 6)">Play</button></a>
+        <button class="btn btn-outline-success my-2 my-sm-0" (click)="remlist(o.id)" type="submit" style="color:red;">Remove from playlist</button>
+      </div>
+      <br>
+      </div>
+    </div>
+</div>
+</div>
+

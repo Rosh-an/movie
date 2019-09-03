@@ -1,0 +1,38 @@
+
+
+
+<div>
+    <iframe width="100%" height="500" [src]="text | safe"></iframe>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+        <b><br>{{listnew.items[0].snippet.title}}</b><br>
+       
+        <hr>
+        <p><b>Video Description</b></p>
+        <p>{{listnew.items[0].snippet.description}}</p><br>
+        
+    </div>
+    <div class="col-sm comm">
+        <ul style="padding-left:0px;">
+            <li class="headd"><b>Views</b></li><hr>
+            <li>{{listnew.items[0].statistics.viewCount}} views</li><br>
+            <li class="headd"><b>Comments</b></li><hr>
+            <li>{{listnew.items[0].statistics.commentCount}} comments</li><br>
+            <li class="headd"><b>Channel Name</b></li><hr>
+            <li>{{listnew.items[0].snippet.channelTitle}} </li><br>
+            <li class="headd"><b>Published At</b></li><hr>
+            <li>{{listnew.items[0].snippet.publishedAt}}</li><hr>
+            <li><button class="btn btn-outline-success my-2 my-sm-0" (click)="playlist1(listnew.items[0].id,listnew.items[0].snippet.title)" type="submit" style="color:black;">Add to Playlist</button><br></li>
+        </ul>
+    </div>
+    </div>
+    <!--<h5><a [routerLink]="['/home']">Back to Home</a></h5>-->
+    <button type="button" class="btn btn-primary" [routerLink]="['/home']">Back to Home         </button>
+    <!--<h5><a [routerLink]="['/playlist']">Go To Playlist</a></h5>-->
+    <button type="button" class="btn btn-success" [routerLink]="['/playlist']">         Go To Playlist</button>
+
+
+    
